@@ -217,8 +217,10 @@ class _ToDoPageState extends State<ToDoListPage> {
         }).toList();
 
         updatedTasks.sort((a, b) {
-          if (a.isCompleted == b.isCompleted) return 0;
-          return a.isCompleted ? 1 : -1;
+          if (a.isCompleted != b.isCompleted) {
+            return a.isCompleted ? 1 : -1;
+          }
+          return a.name.toLowerCase().compareTo(b.name.toLowerCase());
         });
 
         setState(() => tasks = updatedTasks);
